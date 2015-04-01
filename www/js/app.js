@@ -15,5 +15,12 @@ angular.module('starter', ['ionic'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    // initialize Google Analytics
+    if(typeof analytics !== "undefined") {
+        analytics.startTrackerWithId("UA-38539184-10");
+    } else {
+        console.log("Google Analytics Unavailable");
+    }
   });
 })
