@@ -1,7 +1,7 @@
 angular.module('starter.services', [])
 
-.factory('Registrant', function($http) {
-  var backendUrl = '';
+.factory('Business', function($http) {
+  var backendUrl = 'https://localhost/Dealiver-backend/api/v1';
 
   return {
     getBusinesses: function() {
