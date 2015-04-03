@@ -1,9 +1,38 @@
 angular.module('starter.controllers', [])
 
 // Home Controller
-.controller('HomeCtrl', function($scope){
+.controller('HomeCtrl', function($scope, $ionicLoading, $ionicPopup, $state, Business){
   // track page view
   if(typeof analytics !== "undefined") { analytics.trackView('Home');}
+
+  $scope.data = {};
+
+  // $scope.clearSearch = function() {
+  //   $scope.data.query = '';
+  // };
+
+  $ionicLoading.show({
+    template: 'Loading...'
+  });
+
+  var promise = Business.getBusinesses();
+
+  promise.then(function (result) {
+    $scope.businesses = result.data;
+  });
+
+  promise.catch(function(error) {
+    $ionicPopup.alert({
+      title: 'Network Connection Error',
+      template: 'Unable to retrieve glossary. Please check your network connection and try again.'
+    }).then(function() {
+      $state.go($scope.fromState);
+    });
+  });
+
+  promise['finally'](function() {
+    $ionicLoading.hide();
+  });
 })
 
 // Who Controller
