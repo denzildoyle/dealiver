@@ -7,9 +7,9 @@ angular.module('starter.controllers', [])
 
   $scope.data = {};
 
-  // $scope.clearSearch = function() {
-  //   $scope.data.query = '';
-  // };
+  $scope.clearSearch = function() {
+    $scope.data.query = '';
+  };
 
   $ionicLoading.show({
     template: 'Loading...'
