@@ -24,7 +24,7 @@ angular.module('starter.controllers', [])
   promise.catch(function(error) {
     $ionicPopup.alert({
       title: 'Network Connection Error',
-      template: 'Unable to retrieve glossary. Please check your network connection and try again.'
+      template: 'Please check your internet connection and try again.'
     }).then(function() {
       $state.go($scope.fromState);
     });
